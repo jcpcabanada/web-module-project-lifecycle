@@ -1,11 +1,38 @@
 import React from 'react';
+import User from "./components/User";
+import FollowerList from "./components/FollowerList";
 // import axios from 'axios';
 
 // https://api.github.com/users/jcpcabanada and https://api.github.com/users/jcpcabanada/followers
 
 class App extends React.Component {
     state = {
+        currentUser: "jcpcabanada",
+        user: {
+            avatar_url: "https://avatars.githubusercontent.com/u/79226951?v=4",
+            html_url: "https://github.com/jcpcabanada",
+            login: "jcpcabanada",
+            name: "Jordan Chaz Cabanada",
+            public_repos: 33,
+            followers: 4
 
+        },
+        followers: [
+            {
+                login: "ryanghoward",
+                avatar_url: "https://avatars.githubusercontent.com/u/72590723?v=4",
+                html_url: "https://github.com/ryanghoward"
+            },
+            {
+                login: "ryanghoward",
+                avatar_url: "https://avatars.githubusercontent.com/u/72590723?v=4",
+            },
+            {
+                login: "ryanghoward",
+                avatar_url: "https://avatars.githubusercontent.com/u/72590723?v=4",
+                html_url: "https://github.com/ryanghoward"
+            }
+        ]
     }
 
     render() {
@@ -19,22 +46,10 @@ class App extends React.Component {
                     </form>
                 </div>
                 <div className="card">
-                    <img width="300" src="https://avatars.githubusercontent.com/u/79226951?v=4" alt='profile pic' />
-                    <a target='_blank' href="https://github.com/jcpcabanada" ><h2>Jordan Chaz Cabanada</h2></a>
-                    <p>(jcpcabanada)</p>
-                    <p>Total Repos: 32</p>
-                    <p>Total Followers: 4</p>
-                    {/*<User/>*/}
+                    <User user={this.state.user}/>
                 </div>
                 <div className="bottom">
-                    <h2>Followers: </h2>
-                    <img width="150" src="https://avatars.githubusercontent.com/u/72590723?v=4"/>
-                    <a target="_blank" href='https://github.com/ryanghoward'><p>ryanghoward</p></a>
-                    <img width="150" src="https://avatars.githubusercontent.com/u/72590723?v=4"/>
-                    <a target="_blank" href='https://github.com/ryanghoward'><p>ryanghoward</p></a>
-                    <img width="150" src="https://avatars.githubusercontent.com/u/72590723?v=4"/>
-                    <a target="_blank" href='https://github.com/ryanghoward'><p>ryanghoward</p></a>
-                    {/*<FollowerList/>*/}
+                    <FollowerList followers={this.state.followers}/>
                 </div>
             </div>);
     }
